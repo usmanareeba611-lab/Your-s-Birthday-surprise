@@ -1,0 +1,668 @@
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #fff4f8;
+    color: #4b2635;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   GENERAL SCREEN
+========================= */
+
+.screen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   COUNTDOWN SCREEN
+========================= */
+
+#countdown-screen {
+    background:
+        radial-gradient(circle at 20% 20%, #ffd8e8 0%, transparent 25%),
+        radial-gradient(circle at 80% 80%, #fbc2d8 0%, transparent 25%),
+        linear-gradient(135deg, #fff4f8, #ffe4ee);
+}
+
+.countdown-content {
+    width: 92%;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+    padding: 30px 15px;
+}
+
+.small-text {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: #9c5872;
+    animation: fadeDown 1.5s ease;
+}
+
+.countdown-content h1 {
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: #8f3155;
+    margin-bottom: 20px;
+    animation: heartbeat 2s infinite;
+}
+
+.intro {
+    max-width: 550px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #704457;
+}
+
+
+/* =========================
+   COUNTDOWN BOX
+========================= */
+
+.countdown-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 45px auto 25px;
+    flex-wrap: wrap;
+}
+
+.time {
+    min-width: 85px;
+    padding: 18px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 30px rgba(126, 45, 78, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.time span {
+    display: block;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #8f3155;
+}
+
+.time small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #9c5872;
+}
+
+.colon {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #a8496c;
+}
+
+.countdown-message {
+    font-size: 1.05rem;
+    color: #805067;
+    margin-top: 20px;
+}
+
+.heart {
+    font-size: 4rem;
+    color: #c94c78;
+    margin-top: 30px;
+    animation: heartbeat 1.5s infinite;
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.countdown-content::before,
+.countdown-content::after {
+    content: "♡";
+    position: absolute;
+    font-size: 5rem;
+    color: rgba(201, 76, 120, 0.15);
+    animation: float 5s ease-in-out infinite;
+}
+
+.countdown-content::before {
+    left: -100px;
+    top: 20%;
+}
+
+.countdown-content::after {
+    right: -100px;
+    bottom: 20%;
+    animation-delay: 2s;
+}
+
+
+/* =========================
+   BIRTHDAY REVEAL
+========================= */
+
+#birthday-screen {
+    background:
+        radial-gradient(circle at 50% 30%, #ffd1e2, transparent 30%),
+        linear-gradient(135deg, #fff1f7, #ffdce9);
+}
+
+.birthday-content {
+    text-align: center;
+    padding: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.reveal-text {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: #a33d63;
+    animation: fadeDown 1.5s ease;
+}
+
+.birthday-title {
+    margin-top: 20px;
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
+    color: #8f3155;
+    animation: birthdayPop 1.2s ease;
+}
+
+.birthday-content h2 {
+    font-size: clamp(3rem, 11vw, 7rem);
+    color: #c23e70;
+    margin: 10px 0 20px;
+    animation: birthdayPop 1.5s ease;
+}
+
+.birthday-subtitle {
+    font-size: 1.15rem;
+    color: #704457;
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+#start-surprise,
+.next-button,
+#open-letter {
+    padding: 15px 28px;
+    border-radius: 50px;
+    background: #a83e68;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 10px 25px rgba(126, 45, 78, 0.2);
+    transition: 0.3s ease;
+}
+
+#start-surprise:hover,
+.next-button:hover,
+#open-letter:hover {
+    transform: translateY(-4px) scale(1.03);
+    background: #8f3155;
+    box-shadow: 0 15px 30px rgba(126, 45, 78, 0.3);
+}
+
+#start-surprise:active,
+.next-button:active,
+#open-letter:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================
+   CONTENT SECTIONS
+========================= */
+
+.content-section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 70px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at 10% 10%, #ffe1ec, transparent 25%),
+        radial-gradient(circle at 90% 90%, #ffd8e7, transparent 25%),
+        #fff5f9;
+}
+
+.section-card,
+.final-card {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 45px 30px;
+    border-radius: 35px;
+    box-shadow: 0 20px 60px rgba(126, 45, 78, 0.12);
+    backdrop-filter: blur(12px);
+    animation: cardAppear 1s ease;
+}
+
+.section-icon {
+    font-size: 4rem;
+}
+
+.section-card h2,
+.final-card h2 {
+    color: #8f3155;
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin: 20px 0;
+}
+
+.section-card p,
+.final-card p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #674052;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   LETTER SECTION
+========================= */
+
+#letter-section {
+    background:
+        radial-gradient(circle at 50% 20%, #ffd9e8, transparent 35%),
+        #fff3f7;
+    flex-direction: column;
+}
+
+.letter-wrapper {
+    width: 100%;
+    max-width: 750px;
+    text-align: center;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto 30px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.envelope-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #e99ab6;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(126, 45, 78, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.envelope-front span {
+    font-size: 3rem;
+}
+
+.envelope-front p {
+    margin-top: 10px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.envelope-flap {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #d97e9e;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transform-origin: top;
+    transition: 0.8s ease;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open {
+    transform: translateY(-10px);
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    margin-top: 40px;
+    padding: 45px 35px;
+    background: #fffdf8;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(80, 40, 50, 0.15);
+    text-align: left;
+    position: relative;
+    animation: letterAppear 1s ease;
+}
+
+.letter::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid #e9c2cf;
+    pointer-events: none;
+}
+
+.letter-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.letter-header span {
+    font-size: 2.5rem;
+}
+
+.letter-header h2 {
+    color: #8f3155;
+    margin-top: 10px;
+    font-size: 2rem;
+}
+
+.letter-text {
+    position: relative;
+    z-index: 2;
+}
+
+.letter-text p {
+    color: #5e414c;
+    font-size: 1.05rem;
+    line-height: 2;
+    margin-bottom: 22px;
+}
+
+.letter-text .highlight {
+    text-align: center;
+    font-style: italic;
+    color: #a33d63;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.final-message {
+    font-size: 1.25rem !important;
+    color: #8f3155 !important;
+    font-weight: bold;
+}
+
+.signature {
+    text-align: right;
+    color: #8f3155 !important;
+    margin-top: 35px;
+}
+
+.letter .next-button {
+    display: block;
+    margin: 30px auto 0;
+}
+
+
+/* =========================
+   FINAL SECTION
+========================= */
+
+#final-section {
+    background:
+        radial-gradient(circle at 50% 30%, #ffd1e2, transparent 35%),
+        linear-gradient(135deg, #fff2f7, #ffe0eb);
+}
+
+.big-heart {
+    font-size: 5rem;
+    animation: heartbeat 1.5s infinite;
+}
+
+.final-line {
+    font-size: 1.3rem !important;
+    color: #9c315a !important;
+    font-weight: bold;
+}
+
+.hearts {
+    font-size: 2rem;
+    color: #c94c78;
+    margin: 25px 0;
+    letter-spacing: 8px;
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    z-index: 100;
+    animation: confettiFall linear forwards;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(10deg);
+    }
+}
+
+@keyframes birthdayPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes confettiFall {
+    from {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MOBILE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+
+    .countdown-content {
+        padding: 20px 10px;
+    }
+
+    .small-text {
+        font-size: 0.8rem;
+    }
+
+    .intro {
+        font-size: 0.95rem;
+    }
+
+    .countdown-box {
+        gap: 5px;
+        margin-top: 30px;
+    }
+
+    .time {
+        min-width: 65px;
+        padding: 13px 5px;
+        border-radius: 15px;
+    }
+
+    .time span {
+        font-size: 1.6rem;
+    }
+
+    .time small {
+        font-size: 0.6rem;
+    }
+
+    .colon {
+        font-size: 1.5rem;
+    }
+
+    .countdown-message {
+        font-size: 0.9rem;
+    }
+
+    .section-card,
+    .final-card {
+        padding: 35px 20px;
+        border-radius: 25px;
+    }
+
+    .section-card p,
+    .final-card p {
+        font-size: 1rem;
+    }
+
+    .envelope {
+        width: 260px;
+        height: 175px;
+    }
+
+    .envelope-flap {
+        border-left-width: 130px;
+        border-right-width: 130px;
+        border-top-width: 87px;
+    }
+
+    .letter {
+        padding: 35px 22px;
+    }
+
+    .letter-text p {
+        font-size: 0.98rem;
+        line-height: 1.8;
+    }
+
+    #start-surprise,
+    .next-button,
+    #open-letter {
+        font-size: 0.9rem;
+        padding: 13px 21px;
+    }
+  }
